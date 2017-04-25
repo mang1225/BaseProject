@@ -3,12 +3,14 @@
     android:id="@+id/loading_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="center"
+    >
 
-    <ProgressBar
-        style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:theme="@style/CircularProgress" />
+  <ProgressBar
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:theme="@style/CircularProgress"
+      style="@style/Widget.AppCompat.ProgressBar"
+      />
 
 </LinearLayout>

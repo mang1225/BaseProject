@@ -9,6 +9,7 @@
     android:minHeight="?attr/actionBarSize"
     app:layout_collapseMode="pin"
     app:popupTheme="@style/ToolBarPopupTheme"
-    app:theme="@style/Toolbar">
+    app:theme="@style/Toolbar"
+    >
 
 </android.support.v7.widget.Toolbar>
