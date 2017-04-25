@@ -1,6 +1,6 @@
 package com.zht.baseproject.http;
 
-import android.util.Log;
+import com.zht.baseproject.utils.LogUtils;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -20,7 +20,7 @@ public class HttpTransformer<R extends HttpResult<T>, T> implements Observable.T
     return rObservable.flatMap(new Func1<R, Observable<T>>() {
       @Override public Observable<T> call(R r) {
 
-        Log.d(TAG, r.isError() ? "HttpResult is error" : "HttpResult is right");
+        LogUtils.d(TAG, r.isError() ? "HttpResult is error" : "HttpResult is right");
 
         if (r.isError()) {
           return Observable.error(new ApiException("网络出错"));
@@ -28,7 +28,8 @@ public class HttpTransformer<R extends HttpResult<T>, T> implements Observable.T
           return createData(r.getResults());
         }
       }
-    }).subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).subscribeOn(AndroidSchedulers.mainThread()).observeOn(AndroidSchedulers.mainThread());
+    }).subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    //}).subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).subscribeOn(AndroidSchedulers.mainThread()).observeOn(AndroidSchedulers.mainThread());
   }
 
   private Observable<T> createData(final T data) {
